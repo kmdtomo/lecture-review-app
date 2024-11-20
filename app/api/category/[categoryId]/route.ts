@@ -1,7 +1,7 @@
 import { supabase } from "@/app/lib/supabase/supabaseClient"
 import { NextResponse } from "next/server"
 
-export async function GET(request:Request,{params}:{params:{categoryId:string}}){
+export async function GET(request:Request,{params}:{params:{categoryId:string}}): Promise<NextResponse>{
     const {categoryId} = params
     try{
         const {data:lecture,error} = await supabase.from("lecture").select("*").eq("category",categoryId)
