@@ -2,13 +2,12 @@ import LectureDetail from "@/app/componets/LectureDtail";
 import { nextAuthOptions } from "@/app/lib/next-auth/option";
 import { getServerSession } from "next-auth";
 
-
 const LectureDetailPage = async ({
   params,
 }: {
   params: { lectureId: string };
 }) => {
-  const { lectureId } = params;
+  const { lectureId } = await params;
   const session = await getServerSession(nextAuthOptions);
   const userId = session?.user.id ?? undefined;
 

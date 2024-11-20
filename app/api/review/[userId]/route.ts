@@ -6,8 +6,8 @@ import { NextResponse } from "next/server"
 {/**レビュー内容を取得し、
     そのlectureIdと同一のlecture_nameをsupabaseから取得 */}
 
-export async function GET( request:Request,{params}:{params:{userId:string}}){
-    const userId  = params.userId
+export async function GET( request:Request,{params}:{params:Promise<{userId:string}>}){
+    const {userId}  = await params
     try{
      const getReview = await prisma.review.findMany({
         where:{userId:userId},

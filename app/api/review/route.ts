@@ -30,8 +30,8 @@ export async function POST(request:Request){
     
 
 //レビュー保存用
-export async function GET(request:Request,{params}:{params:{userId:string,lectureId:string}}){
-    const {lectureId} = params;
+export async function GET(request:Request,{params}:{params:Promise<{userId:string,lectureId:string}>}){
+    const {lectureId} = await params;
 
     try{
         const review = await prisma.review.findMany({
@@ -46,22 +46,4 @@ export async function GET(request:Request,{params}:{params:{userId:string,lectur
   
 }
 
-export async function DELETE(request:Request){
-    const {id}:Review = await request.json() 
-    try{
-        const deleteReview = await prisma.review.deleteMany({
-            where:{
-                id:id,
-            }
-        })
-        if (deleteReview.count > 0){
-        return NextResponse.json(deleteReview,{status:200}),{message:"削除成功"}
-        }else {
-            return NextResponse.json({ message: "レビューが見つかりません" }),{status:404};
-          }
 
-    }catch(error){
-        return NextResponse.json({error,message:"削除失敗"}),{status:500}
-
-    }
-}

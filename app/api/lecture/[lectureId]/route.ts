@@ -3,8 +3,8 @@ import { NextResponse } from "next/server"
 
 
 //講義詳細取得API https://localhost:3000/lecture/1(lectureId)
-export async function GET(request:Request,{params}:{params:{lectureId:string}}){
-    const {lectureId} = params
+export async function GET(request:Request,{params}:{params:Promise<{lectureId:string}>}){
+    const {lectureId} = await params
     try{
 
         const{data,error} = await supabase.from("lecture").select("*").eq("id",lectureId).single()

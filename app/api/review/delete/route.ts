@@ -14,7 +14,7 @@ export async function DELETE(request: Request) {
     });
 
     if (deleteReview.count > 0) {
-      return NextResponse.json(deleteReview, { status: 200 }),{ message:"削除成功"}; // レスポンスにメッセージを追加
+      return NextResponse.json({deleteReview,message:"削除成功"},{ status: 200 }) // レスポンスにメッセージを追加
     } else {
       return NextResponse.json({ message: "レビューが見つかりません" }, { status: 404 }); // NextResponseを返す
     }
