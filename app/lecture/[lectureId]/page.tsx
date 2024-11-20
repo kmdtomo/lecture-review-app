@@ -7,7 +7,7 @@ const LectureDetailPage = async ({
 }: {
   params: { lectureId: string };
 }) => {
-  const { lectureId } = await params;
+  const { lectureId } = params;
   const session = await getServerSession(nextAuthOptions);
   const userId = session?.user.id ?? undefined;
 
