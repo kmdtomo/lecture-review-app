@@ -7,18 +7,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaRegBookmark } from "react-icons/fa";
 
-export const CategoryPage = async ({
+export default async function CategoryPage({
   params,
 }: {
-  params: { categoryId: string };
-}) => {
-  const { categoryId } = params;
+  params: Promise<{ category: string }>;
+}) {
+  const { category } = await params;
   let categoryLecture: Lecture[] = [];
   const session = await getServerSession(nextAuthOptions);
   const user = await session?.user;
   try {
     const responce = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/category/${categoryId}`,
+      `${process.env.NEXT_PUBLIC_API_URL}/category/${category}`,
       { cache: "no-cache" }
     );
     if (!responce.ok) {
@@ -162,6 +162,4 @@ export const CategoryPage = async ({
       </main>
     </>
   );
-};
-
-export default CategoryPage;
+}

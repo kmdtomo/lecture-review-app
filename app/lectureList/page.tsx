@@ -6,7 +6,7 @@ import { supabase } from "../lib/supabase/supabaseClient";
 {
   /* 講義一覧ページ */
 }
-export async function LectureListPage() {
+export default async function LectureListPage() {
   const session = await getServerSession(nextAuthOptions);
   const user = await session?.user;
 
@@ -37,5 +37,3 @@ export async function LectureListPage() {
     </>
   );
 }
-
-export default LectureListPage;

@@ -1,37 +1,39 @@
 import LectureDetail from "@/app/componets/LectureDtail";
 import { nextAuthOptions } from "@/app/lib/next-auth/option";
+import { Lecture } from "@/app/type/type";
 import { getServerSession } from "next-auth";
 
-const LectureDetailPage = async ({
-  params,
-}: {
-  params: { lectureId: string };
-}) => {
-  const { lectureId } = params;
-  const session = await getServerSession(nextAuthOptions);
-  const userId = session?.user.id ?? undefined;
+type PageProps = {
+  params: Promise<{
+    lectureId: string;
+  }>;
+};
 
-  const getLectureDetail = async () => {
+export default async function LectureDetailPage({ params }: PageProps) {
+  const { lectureId } = await params;
+  const session = await getServerSession(nextAuthOptions);
+  const userId = session?.user?.id ?? undefined;
+
+  const getLectureDetail = async (): Promise<Lecture | null> => {
     try {
-      const responce = await fetch(
-        `${process.env.NEXT_PUBLIC_API_URL}/lecture/${lectureId}`
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/lecture/${lectureId}`,
+        { cache: "no-store" }
       );
-      const lecture = await responce.json();
+      if (!response.ok) {
+        throw new Error("講義データを取得できません");
+      }
+      const lecture = await response.json();
       return lecture;
     } catch (error) {
       console.error("講義内容を取得できません", error);
+      return null;
     }
   };
 
   const lecture = await getLectureDetail();
 
   return (
-    <LectureDetail
-      lectureId={lectureId}
-      userId={userId}
-      lecture={lecture}
-    ></LectureDetail>
+    <LectureDetail lectureId={lectureId} userId={userId} lecture={lecture} />
   );
-};
-
-export default LectureDetailPage;
+}

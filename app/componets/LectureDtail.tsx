@@ -11,7 +11,7 @@ import { ChangeEvent, useState, FC } from "react";
 import useSWR from "swr";
 
 type Props = {
-  lecture: Lecture;
+  lecture: Lecture | null;
   userId?: string;
   lectureId: string;
   // params: { lectureId: string };
