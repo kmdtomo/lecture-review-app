@@ -1,101 +1,48 @@
 import Image from "next/image";
+import { Rammetto_One } from "next/font/google";
+import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { nextAuthOptions } from "./lib/next-auth/option";
 
-export default function Home() {
+const rammettoOne = Rammetto_One({ subsets: ["latin"], weight: ["400"] });
+
+export default async function Home() {
+  const session = await getServerSession(nextAuthOptions);
+  const user = await session?.user;
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
+    <div className="flex md:flex-row flex-col-reverse justify-around items-center md:mt-7 mt-14">
+      <div className="md:ml-12">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+          src={"/main.png"}
+          alt="main"
+          width={500}
+          height={700}
+          className="rounded-md md:w-[500px] md:h-[600px] w-full h-auto"
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <div className="flex flex-col md:mb-14 mb-6 md:mr-7 ">
+        <div>
+          <h3 className="text-[#0BA595] font-semibold tracking-wider text-center text-lg md:text-2xl md:mb-8 mb-4">
+            RD専用講義評価アプリ
+          </h3>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className={rammettoOne.className}>
+          <h1 className="text-center md:text-[135px] text-[95px] leading-none">
+            <span className="block">LECTURE</span>
+            <span className="block">REVIEW</span>
+          </h1>
+        </div>
+        <div className="mx-auto mt-9 md:mb-0 mb-5">
+          <Link
+            href={user ? "/lectureList" : "/api/auth/signin"}
+            className="text-center px-4 py-2  bg-[#FCA31C] rounded-md shadow-md text-white text-lg hover:opacity-75"
+          >
+            今すぐ始める
+          </Link>
+        </div>
+      </div>
+      <div className="bottom-0 left-0 w-full md:h-[170px] h-[100px] z-[-1] bg-[#0BA595] absolute"></div>
     </div>
   );
 }
