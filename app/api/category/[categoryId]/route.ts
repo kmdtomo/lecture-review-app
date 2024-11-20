@@ -1,12 +1,12 @@
 import { supabase } from "@/app/lib/supabase/supabaseClient"
 import { NextResponse } from "next/server"
 
-export async function GET(request:Request,{params}:{params:{categoryId:string}}){
+export async function GET(request:Request,{params}:{params:{categoryId:string}}): Promise<NextResponse>{
     const category = params.categoryId
     try{
         const {data:lecture,error} = await supabase.from("lecture").select("*").eq("category",category)
         if(error)
-            return({message:"講義内容が取れません"})
+            return NextResponse.json({message:"講義内容が取れません"})
         return NextResponse.json(lecture,{status:200})
 
     }catch(error){
@@ -14,4 +14,4 @@ export async function GET(request:Request,{params}:{params:{categoryId:string}})
 
 
     }
-}
+} 
