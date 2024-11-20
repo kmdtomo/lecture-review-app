@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import prisma from "@/app/lib/prisma/prisma";
 import { BookMark } from "@/app/type/type";
 import { NextResponse } from "next/server";
