@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 //lectureIdからレビューを取得
 
 export async function GET(request:Request,{params}:{params:Promise<{ lectureId: string }> }
-    ): Promise<NextResponse> {
+    ){
     const {lectureId} =  await params;
     try{
         //prismaのreviewからparamsのlectureIdをとってくる

@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 export async function GET(
   request: Request,
   { params }: { params: Promise<{ category: string }> } // Promiseでラップ
-): Promise<NextResponse> { // 返り値の型を明示的に指定
+) { // 返り値の型を明示的に指定
     try {
         const { category } = await params; // await で params を解決
 

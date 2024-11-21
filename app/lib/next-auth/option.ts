@@ -4,7 +4,6 @@ import GoogleProvider from "next-auth/providers/google";
 import prisma from "../prisma/prisma";
 import { User } from "@/app/type/type";
 
-
 // カスタムセッションの型定義
 declare module "next-auth" {
   interface Session {
@@ -26,6 +25,7 @@ export const nextAuthOptions: NextAuthOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
   ],
+
 
   adapter: PrismaAdapter(prisma),
   callbacks: {

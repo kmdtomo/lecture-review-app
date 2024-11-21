@@ -15,9 +15,9 @@ export default async function Home() {
         <Image
           src={"/main.png"}
           alt="main"
-          width={500}
-          height={700}
-          className="rounded-md md:w-[500px] md:h-[600px] w-full h-auto"
+          width={350}
+          height={600}
+          className="rounded-md md:w-[500px] md:h-[600px]  h-auto"
         />
       </div>
 
@@ -28,7 +28,7 @@ export default async function Home() {
           </h3>
         </div>
         <div className={rammettoOne.className}>
-          <h1 className="text-center md:text-[135px] text-[95px] leading-none">
+          <h1 className="text-center md:text-[135px] text-[70px] leading-none">
             <span className="block">LECTURE</span>
             <span className="block">REVIEW</span>
           </h1>
@@ -42,7 +42,7 @@ export default async function Home() {
           </Link>
         </div>
       </div>
-      <div className="bottom-0 left-0 w-full md:h-[170px] h-[100px] z-[-1] bg-[#0BA595] absolute"></div>
+      <div className="bottom-0 left-0 w-full md:h-[170px] h-[200px] z-[-1] bg-[#0BA595] absolute"></div>
     </div>
   );
 }

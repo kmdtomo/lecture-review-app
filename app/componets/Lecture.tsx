@@ -42,8 +42,8 @@ const Lectures: FC<Props> = ({ user, getLectures, getAllReview }) => {
     : getLectures; //searchKeywordのvalueが空ならすべての講義を表示
 
   return (
-    <>
-      <div className="flex flex-row justify-end items-center ">
+    <div className="mx-auto">
+      <div className="flex flex-row justify-end items-center">
         <div className="mr-3">
           <SerchLecture setSearchKeyword={setSearchKeyword} />
         </div>
@@ -102,7 +102,7 @@ const Lectures: FC<Props> = ({ user, getLectures, getAllReview }) => {
           </Link>
         ))}
       </main>
-    </>
+    </div>
   );
 };
 
