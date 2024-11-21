@@ -65,7 +65,9 @@ export default function MyPage() {
       <div className="container mx-auto">
         <div className="w-4/5 bg-white shadow-md m-auto mb-14 mt-10 flex flex-col">
           <div className="mx-auto">
-            <h3 className="text-2xl font-bold mt-14 mb-6">マイページ</h3>
+            <h3 className="text-lg md:text-2xl font-bold mt-14 mb-6">
+              マイページ
+            </h3>
           </div>
           <div className="mx-auto">
             <Image
@@ -78,12 +80,20 @@ export default function MyPage() {
           </div>
           <div className="mx-auto flex flex-col">
             <div className="flex mt-6 items-center ">
-              <p className="mr-6 text-[#909090] text-[14px] w-14 ">名前</p>
-              <p className="text-[18px] font-semibold ">{user?.name}</p>
+              <p className="mr-6 text-[#909090] text-[10px] mdtext-[14px] w-14 ">
+                名前
+              </p>
+              <p className="text-[12px] md:text-[18px]font-semibold ">
+                {user?.name}
+              </p>
             </div>
             <div className="flex mt-3 items-center">
-              <p className="mr-6 text-[#909090] text-[14px] w-14 ">メール</p>
-              <p className="text-[18px] font-semibold ">{user?.email}</p>
+              <p className="mr-6 text-[#909090] text-[10px] mdtext-[14px] w-14 ">
+                メール
+              </p>
+              <p className="text-[12px] md:text-[18px] font-semibold ">
+                {user?.email}
+              </p>
             </div>
           </div>
           <ul className="list-reset flex md:ml-[80px] ml-4 mt-7">
@@ -146,7 +156,9 @@ export default function MyPage() {
             </div>
           ) : (
             <div className=" flex md:ml-[80px] ml-4 my-9">
-              <p>レビューを投稿してください</p>
+              <p className="md:text-lg text-[12px]">
+                レビューを投稿してください
+              </p>
             </div>
           )}
         </div>

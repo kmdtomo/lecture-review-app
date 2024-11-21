@@ -24,34 +24,34 @@ const Header = () => {
         <div className="flex items-center gap-1">
           <Link
             href="/"
-            className="text-black hover:text-[#FCA31C] px-2 md:px-6 py-2 rounded-md text-[8px] md:text-sm font-medium"
+            className="text-black hover:text-[#FCA31C] px-1 md:px-6 py-2 rounded-md text-[8px] md:text-sm font-medium"
           >
             ホーム
           </Link>
           <Link
             href="/lectureList"
-            className="text-black hover:text-[#FCA31C] px-3 md:px-6 py-2 rounded-md text-[8px] md:text-sm font-medium"
+            className="text-black hover:text-[#FCA31C] px-1 md:px-6 py-2 rounded-md text-[8px] md:text-sm font-medium"
           >
             講義一覧
           </Link>
 
           <Link
             href={user ? "/mypage" : "/api/auth/signin"}
-            className="text-black hover:text-[#FCA31C] px-3 md:px-6 py-2 rounded-md text-[8px] md:text-sm font-medium"
+            className="text-black hover:text-[#FCA31C] px-1 md:px-6 py-2 rounded-md text-[8px] md:text-sm font-medium"
           >
             マイページ
           </Link>
           {user ? (
             <Link
               href="/api/auth/signout"
-              className="text-white hover:opacity-75 px-3 md:px-6  md:mr-10 mr-3 py-2  rounded-md text-[8px] md:text-sm font-medium bg-[#0BA595] "
+              className="text-white hover:opacity-75 px-2 md:px-6  md:mr-10 mr-2 py-2  rounded-md text-[8px] md:text-sm font-medium bg-[#0BA595] "
             >
               ログアウト
             </Link>
           ) : (
             <Link
               href="/api/auth/signin"
-              className="text-white hover:text-white px-2 md:px-6  md:mr-10 mr-3 py-2  rounded-md text-[8px] md:text-sm font-medium bg-[#0BA595]"
+              className="text-white hover:text-white px-2 md:px-6  md:mr-10 mr-2 py-2  rounded-md text-[7px] md:text-sm font-medium bg-[#0BA595]"
             >
               ログイン
             </Link>

@@ -15,9 +15,9 @@ export default async function Home() {
         <Image
           src={"/main.png"}
           alt="main"
-          width={350}
-          height={600}
-          className="rounded-md md:w-[500px] md:h-[600px]  h-auto"
+          width={200}
+          height={300}
+          className="rounded-md md:w-[500px] md:h-[600px] bottom-0 left-0  h-auto"
         />
       </div>
 
