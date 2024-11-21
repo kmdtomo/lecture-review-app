@@ -28,12 +28,12 @@ export default async function LectureListPage() {
   const reviews = await AllReviews.json();
 
   return (
-    <>
+    <div className="mx-auto">
       <Lectures
         getAllReview={reviews}
         getLectures={lectures}
         user={user}
       ></Lectures>
-    </>
+    </div>
   );
 }
