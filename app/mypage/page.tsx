@@ -119,7 +119,7 @@ export default function MyPage() {
               {userReviews.map((review) => (
                 <div
                   key={review.id}
-                  className="bg-[#F3F3F3] mx-auto  w-[250px] md:max-w-[770px] mt-5 rounded-md border border-[#D3CECE] min-h-[85px] flex mb-3"
+                  className="bg-[#F3F3F3] mx-auto w-[250px] md:w-[770px] mt-5 rounded-md border border-[#D3CECE] min-h-[85px] flex mb-3"
                 >
                   <div className="flex justify-between items-start flex-col w-full my-4 md:ml-3 ml-2 ">
                     <div className="flex flex-col">

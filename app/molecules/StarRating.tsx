@@ -1,4 +1,6 @@
-import React, { FC, memo } from "react";
+"use client";
+
+import React, { FC, memo, useEffect, useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import { Review } from "../type/type";
 
@@ -35,9 +37,9 @@ const averageRating = (reviews: Review | Review[] | undefined): number => {
   } else {
     // reviews が単一の Review オブジェクトの場合
     const totalRating =
-      (reviews.atmosphereRating || 0) +
-      (reviews.futureRating || 0) +
-      (reviews.easinessRating || 0);
+      (reviews.atmosphereRating ?? 0) +
+      (reviews.futureRating ?? 0) +
+      (reviews.easinessRating ?? 0);
     const average = totalRating / 3 || 0;
     return roundRating(average); // 0.25刻みで丸める関数を呼び出す
   }
@@ -51,8 +53,12 @@ const roundRating = (rating: number): number => {
 
 const StarsRating: FC<Props> = memo((props) => {
   const { rating, onClick, reviews, size } = props;
+  const [comprehensiveRating, setComprehensiveRating] = useState(0);
 
-  const comprehensiveRating = averageRating(reviews);
+  useEffect(() => {
+    setComprehensiveRating(averageRating(reviews));
+  }, [reviews]);
+
   const displayRating = rating ?? comprehensiveRating;
 
   return (
