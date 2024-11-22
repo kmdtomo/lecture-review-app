@@ -1,5 +1,3 @@
-"use client";
-
 import React, { FC, memo } from "react";
 import { Rating } from "react-simple-star-rating";
 import { Review } from "../type/type";

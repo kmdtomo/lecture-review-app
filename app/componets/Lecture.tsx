@@ -61,7 +61,7 @@ const Lectures: FC<Props> = ({ user, getLectures, getAllReview }) => {
             }
             className="cursor-pointer duration-300 hover:translate-y-1 hover:shadow-none block"
           >
-            <div className="md:w-[330px] md:h-[200px] w-[300px] h-[180px] relative bg-white shadow-md md:mb-5 mb-3">
+            <div className="md:w-[330px] md:h-[210px] w-[300px] h-[180px] relative bg-white shadow-md md:mb-5 mb-3">
               {/* カテゴリ */}
               <div className="bg-[#FCA31C] px-4 absolute top-0 left-0 z-10 py-1">
                 <p className="text-center  text-white text-sm">
@@ -79,7 +79,7 @@ const Lectures: FC<Props> = ({ user, getLectures, getAllReview }) => {
               </div>
 
               {/* テキストエリア */}
-              <div className="z-10 flex flex-col md:h-[140px] justify-between pt-4">
+              <div className="z-10 flex flex-col  justify-between pt-4">
                 {/* 詳細情報 */}
                 <ul className="text-xs md:text-sm  pl-4 ">
                   <li>
@@ -89,7 +89,7 @@ const Lectures: FC<Props> = ({ user, getLectures, getAllReview }) => {
                 </ul>
 
                 {/* 評価 */}
-                <div className="flex justify-end mr-2">
+                <div className="flex items-center justify-end mb-6 mr-2 z-20">
                   <StarsRating
                     reviews={reviewsByLectureId?.[lecture.id]}
                     size={20}
