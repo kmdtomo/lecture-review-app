@@ -43,14 +43,14 @@ const Lectures: FC<Props> = ({ user, getLectures, getAllReview }) => {
 
   return (
     <div className="mx-auto">
-      <div className="flex flex-row justify-end items-center">
+      <div className="flex flex-row justify-end items-center mr-5 md:mr-0">
         <div className="mr-3">
           <SerchLecture setSearchKeyword={setSearchKeyword} />
         </div>
-        <DropMenu></DropMenu>
+        <DropMenu />
       </div>
 
-      <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 my-5 mx-auto">
+      <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-5 justify-items-center">
         {filteredLectures.map((lecture) => (
           <Link
             key={lecture.id}
@@ -61,42 +61,40 @@ const Lectures: FC<Props> = ({ user, getLectures, getAllReview }) => {
             }
             className="cursor-pointer duration-300 hover:translate-y-1 hover:shadow-none block"
           >
-            <div className="w-[330px] h-[200px] justify-self-center relative bg-white shadow-md md:mb-5 mb-2">
-              <div className="bg-[#FCA31C] absolute z-10 px-4">
-                <p className="text-center text-white text-sm ">
+            <div className="md:w-[330px] md:h-[200px] w-[300px] h-[180px] relative bg-white shadow-md md:mb-5 mb-3">
+              {/* カテゴリ */}
+              <div className="bg-[#FCA31C] px-4 absolute top-0 left-0 z-10 py-1">
+                <p className="text-center  text-white text-sm">
                   {lecture.category}
                 </p>
               </div>
-              {/* 講義内容（時間、講師名） */}
-              <div className="z-10 absolute text-sm flex flex-col w-full h-full justify-end ">
-                <div className="flex justify-between mb-1">
-                  <ul className="ml-5 text-sm my-2 mb-2">
-                    <li>
-                      <p className="mb-1">時間：{lecture.day_period}</p>
-                      <p>講師名：{lecture.instructor_name}</p>
-                    </li>
-                  </ul>
 
-                  <div className=" items-end mr-2 mt-8">
-                    {/* <FaRegBookmark size={20} className="mb-3" /> */}
-                    <StarsRating
-                      reviews={
-                        reviewsByLectureId
-                          ? reviewsByLectureId[lecture.id]
-                          : undefined
-                      }
-                      size={20}
-                    />
-                  </div>
-                </div>
-              </div>
-
-              {/* 講義名 */}
-              <div className="absolute top-0 left-0 w-full h-3/5 overflow-hidden bg-black/10">
-                <h3 className="z-10 text-xl text-white absolute text-shadow-md top-1/2 transform -translate-y-1/2 ml-5">
+              {/* 講義画像 */}
+              <div className="relative w-full h-[100px] md:h-[120px] overflow-hidden bg-black/10">
+                <LectureImage lecture={lecture} />
+                {/* 講義名 */}
+                <h3 className="absolute text-lg md:text-xl text-white text-shadow-md top-1/2 left-5 transform -translate-y-1/2 z-10">
                   {lecture.lecture_name}
                 </h3>
-                <LectureImage lecture={lecture}></LectureImage>
+              </div>
+
+              {/* テキストエリア */}
+              <div className="z-10 flex flex-col md:h-[140px] justify-between pt-4">
+                {/* 詳細情報 */}
+                <ul className="text-xs md:text-sm  pl-4 ">
+                  <li>
+                    <p className="mb-1">時間：{lecture.day_period}</p>
+                    <p>講師名：{lecture.instructor_name}</p>
+                  </li>
+                </ul>
+
+                {/* 評価 */}
+                <div className="flex justify-end mr-2">
+                  <StarsRating
+                    reviews={reviewsByLectureId?.[lecture.id]}
+                    size={20}
+                  />
+                </div>
               </div>
             </div>
           </Link>
@@ -145,3 +143,54 @@ export default Lectures;
                     お気に入り登録
                   </button> */
 }
+
+// {filteredLectures.map((lecture) => (
+//   <Link
+//     key={lecture.id}
+//     href={
+//       user
+//         ? `${process.env.NEXT_PUBLIC_BASE_URL}/lecture/${lecture.id}`
+//         : "/api/auth/signin"
+//     }
+//     className="cursor-pointer duration-300 hover:translate-y-1 hover:shadow-none block"
+//   >
+//     <div className="md:w-[330px] md:h-[200px] w-[300px] h-[170px] relative bg-white shadow-md md:mb-5 mb-3">
+//       <div className="bg-[#FCA31C] absolute z-10 px-4">
+//         <p className="text-center text-white text-sm ">
+//           {lecture.category}
+//         </p>
+//       </div>
+//       {/* 講義内容（時間、講師名） */}
+//       <div className="z-10 flex flex-col h-full justify-end ">
+//         <div className="flex justify-between mb-1">
+//           <ul className="ml-5 text-xs md:text-sm my-2 mb-2">
+//             <li>
+//               <p className="mb-1">時間：{lecture.day_period}</p>
+//               <p>講師名：{lecture.instructor_name}</p>
+//             </li>
+//           </ul>
+
+//           <div className=" items-end mr-2 mt-4 md:mt-8">
+//             {/* <FaRegBookmark size={20} className="mb-3" /> */}
+//             <StarsRating
+//               reviews={
+//                 reviewsByLectureId
+//                   ? reviewsByLectureId[lecture.id]
+//                   : undefined
+//               }
+//               size={20}
+//             />
+//           </div>
+//         </div>
+//       </div>
+
+//       {/* 講義名 */}
+//       <div className="absolute top-0 left-0 w-full md:h-[120px] h-[100px] overflow-hidden bg-black/10">
+//         <h3 className="z-10 text-lg md:text-xl text-white absolute text-shadow-md top-1/2 transform -translate-y-1/2 ml-5">
+//           {lecture.lecture_name}
+//         </h3>
+//         <LectureImage lecture={lecture}></LectureImage>
+//       </div>
+//     </div>
+//   </Link>
+// ))}

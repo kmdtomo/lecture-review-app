@@ -5,10 +5,10 @@ export const DropMenu = () => {
   return (
     <div>
       <div className="flex justify-end items-center">
-        <div className="my-3 mr-8 ">
+        <div className="my-3 md:mr-8 mr-4 ">
           <label
             htmlFor="menuToggle"
-            className="cursor-pointer border border-[#888888]-2 px-4 py-2 text-sm text-[#888888] bg-white rounded-md flex items-center justify-between "
+            className="cursor-pointer border border-[#888888]-2 px-4 py-2 text-sm text-[#888888] bg-white rounded-md flex items-center justify-between  "
           >
             コースで探す
             <FaCaretDown
@@ -26,7 +26,7 @@ export const DropMenu = () => {
           {/*カテゴリーページ遷移 */}
           <ul
             id="menu"
-            className="hidden peer-checked:block absolute right-0  mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none z-20 border border-[##888888]-2"
+            className="hidden peer-checked:block absolute right-0  mt-2 md:w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none z-20 border border-[##888888]-2"
           >
             <Link href={`${process.env.NEXT_PUBLIC_BASE_URL}/lectureList/RD`}>
               <li className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#0BA595] hover:text-white ">

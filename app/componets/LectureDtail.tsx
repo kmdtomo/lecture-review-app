@@ -110,19 +110,19 @@ const LectureDetail: FC<Props> = ({ lecture, userId, lectureId }) => {
       <div>
         <div className="container mx-auto">
           {/* カテゴリーごとの画像配置 */}
-          <div className="m-auto mt-10 w-4/5 pb-10 mb-10 relative border bg-white shadow-md">
-            <div className="relativ absolute bg-white top-0 left-0 w-full h-[170px] md:h-[200px] overflow-hidden bg-black/10 mb-0 ">
-              <h3 className="text-white z-10 text-3xl absolute top-1/2 ml-10 text-shadow-md">
+          <div className="m-auto mt-10 w-5/6 md:w-4/5 pb-10 mb-10 relative border bg-white shadow-md">
+            <div className="relativ absolute  top-0 left-0 w-full h-[130px] md:h-[200px] overflow-hidden bg-black/10 mb-0 ">
+              <h3 className="text-white z-10 text-xl md:text-3xl absolute top-1/2 ml-10 text-shadow-md">
                 {lecture?.lecture_name}
               </h3>
               <LectureImage lecture={lecture}></LectureImage>
             </div>
             {/* 詳細テーブル */}
-            <div className="relative z-20 mx-auto  mt-[200px] md:mt-[240px]  w-full max-w-3xl">
+            <div className="relative z-20 mx-auto  mt-[150px] md:mt-[240px]  w-full max-w-3xl">
               <table className=" table-auto mx-auto w-5/6 md:w-full">
                 <tbody>
                   <tr>
-                    <th className="font-normal bg-[#0BA595] text-white border-2 border-gray-400 px-10 py-2 text-center text-sm md:text-base whitespace-nowrap">
+                    <th className="font-normal bg-[#0BA595] text-white border-2 border-gray-400 px-5 md:px-10 py-2 text-center text-xs md:text-base whitespace-nowrap">
                       講師名
                     </th>
                     <td className="border-2 border-gray-400 pl-3 md:pl-7 py-2 text-left text-[12px] md:text-base">
@@ -130,7 +130,7 @@ const LectureDetail: FC<Props> = ({ lecture, userId, lectureId }) => {
                     </td>
                   </tr>
                   <tr>
-                    <th className="font-normal bg-[#0BA595] text-white border-2 border-gray-400 px-10 py-2 text-center text-sm md:text-base whitespace-nowrap">
+                    <th className="font-normal bg-[#0BA595] text-white border-2 border-gray-400 px-5 md:px-10 py-2 text-center text-xs md:text-base whitespace-nowrap">
                       時間
                     </th>
                     <td className="border-2 border-gray-400 pl-3 md:pl-7 py-2 text-left text-[12px] md:text-base">
@@ -138,7 +138,7 @@ const LectureDetail: FC<Props> = ({ lecture, userId, lectureId }) => {
                     </td>
                   </tr>
                   <tr>
-                    <th className="font-normal bg-[#0BA595] text-white border-2 border-gray-400 px-10 py-2 text-center text-sm md:text-base whitespace-nowrap">
+                    <th className="font-normal bg-[#0BA595] text-white border-2 border-gray-400 px-5 md:px-10 py-2 text-center text-xs md:text-base whitespace-nowrap">
                       コース
                     </th>
                     <td className="border-2 border-gray-400 pl-3 md:pl-7 py-2 text-left text-[12px] md:text-base">
@@ -146,18 +146,18 @@ const LectureDetail: FC<Props> = ({ lecture, userId, lectureId }) => {
                     </td>
                   </tr>
                   <tr>
-                    <th className="font-normal bg-[#0BA595] text-white border-2 border-gray-400 px-10 py-2 text-center text-sm md:text-base whitespace-nowrap">
+                    <th className="font-normal bg-[#0BA595] text-white border-2 border-gray-400 px-5 md:px-10 py-2 text-center text-xs md:text-base whitespace-nowrap">
                       評価方法
                     </th>
-                    <td className="border-2 border-gray-400 pl-3 md:pl-7 py-2 text-left text-[12px] md:text-base">
+                    <td className="border-2 border-gray-400 pl-3 md:pl-7 py-2 text-left text-[10px] md:text-[12px] md:text-base">
                       {lecture?.evaluation}
                     </td>
                   </tr>
                   <tr>
-                    <th className="font-normal bg-[#0BA595] text-white border-2 border-gray-400 px-10 py-2 text-center text-sm md:text-base whitespace-nowrap">
+                    <th className="font-normal bg-[#0BA595] text-white border-2 border-gray-400 px-5 md:px-10 py-2 text-center text-xs md:text-base whitespace-nowrap">
                       達成目標
                     </th>
-                    <td className="border-2 border-gray-400 pl-3 md:pl-7 py-2 text-left text-[12px] md:text-base">
+                    <td className="border-2 border-gray-400 pl-3 md:pl-7 py-2 text-left text-[10px] md:text-[12px] md:text-base">
                       {lecture?.objective}
                     </td>
                   </tr>
@@ -167,12 +167,12 @@ const LectureDetail: FC<Props> = ({ lecture, userId, lectureId }) => {
 
             {/*レビュー機能、口コミ機能 */}
 
-            <div className=" flex flex-col md:flex-row justify-between items-start mx-auto md:w-3/4 w-2/3 mt-12 ">
+            <div className=" flex flex-col md:flex-row md:justify-between items-start mx-auto md:w-3/4 w-2/3 mt-6 md:mt-12 ">
               <div className=" flex flex-col">
                 <h3 className="text-xl font-semibold mb-5">評価する</h3>
                 <div className="">
-                  <div className="flex justify-between items-start mb-3">
-                    <p className=" pr-4 text-lg font-semibold text-[#0BA595] ">
+                  <div className="flex md:flex-row flex-col justify-between items-start mb-5 md:mb-3">
+                    <p className=" pr-4 text-base md:text-lg font-semibold text-[#0BA595] ">
                       雰囲気
                     </p>
                     <StarsRating
@@ -181,8 +181,8 @@ const LectureDetail: FC<Props> = ({ lecture, userId, lectureId }) => {
                       rating={atmosphereRating}
                     ></StarsRating>
                   </div>
-                  <div className="flex justify-between items-start mb-3">
-                    <p className=" pr-4 text-lg font-semibold text-[#0BA595]">
+                  <div className="flex md:flex-row flex-col justify-between items-start mb-5 md:mb-3">
+                    <p className=" pr-4 text-base md:text-lg font-semibold text-[#0BA595]">
                       単位取得やすさ
                     </p>
                     <StarsRating
@@ -191,8 +191,8 @@ const LectureDetail: FC<Props> = ({ lecture, userId, lectureId }) => {
                       rating={futureRating}
                     ></StarsRating>
                   </div>
-                  <div className="flex justify-between items-start">
-                    <p className=" pr-4 text-lg font-semibold text-[#0BA595]">
+                  <div className="flex md:flex-row flex-col justify-between items-start">
+                    <p className=" pr-4 text-base md:text-lg font-semibold text-[#0BA595]">
                       将来性
                     </p>
                     <StarsRating
@@ -210,8 +210,8 @@ const LectureDetail: FC<Props> = ({ lecture, userId, lectureId }) => {
                 <textarea
                   value={comments}
                   onChange={onChangeInputComments}
-                  className="border border-black w-[350px] min-h-[100px]"
-                  placeholder="講義について具体的な口コミを書いてください、また特定の教授についての悪口等は書き込まないでください"
+                  className="border border-black md:w-[350px] w-[220px] min-h-[100px]"
+                  placeholder="特定の教授についての悪口等は書き込まない"
                 ></textarea>
               </div>
             </div>
@@ -251,29 +251,31 @@ const LectureDetail: FC<Props> = ({ lecture, userId, lectureId }) => {
                 {reviews.map((review) => (
                   <div
                     key={review.id}
-                    className="bg-[#F3F3F3] mx-auto w-full max-w-[420px] md:max-w-[770px] mt-5 rounded-md border border-[#D3CECE] min-h-[85px] flex mb-3"
+                    className="bg-[#F3F3F3] mx-auto w-[250px] md:max-w-[770px] mt-5 rounded-md border border-[#D3CECE] min-h-[85px] flex mb-3"
                   >
                     <div className="flex justify-start items-start flex-col w-full mx-6 my-4  md:mx-6 ">
-                      <div className="ml-1 flex flex-row items-center ">
-                        <Image
-                          className="rounded-full"
-                          alt="userImage"
-                          width={42}
-                          height={42}
-                          src={review.user?.image || "/default_icon.png"}
-                        ></Image>
+                      <div className="flex flex-col">
+                        <div className="ml-1 flex md:flex-row md:items-center mb-1 md:mb-0 ">
+                          <Image
+                            className="rounded-full"
+                            alt="userImage"
+                            width={42}
+                            height={42}
+                            src={review.user?.image || "/default_icon.png"}
+                          ></Image>
 
-                        <div className="ml-2 font-semibold">
-                          <p>{review.user?.name}</p>
+                          <div className="md:ml-2 ml-4 mt-2 md:mt-0 font-semibold">
+                            <p>{review.user?.name}</p>
+                          </div>
                         </div>
 
-                        <div className="ml-3">
+                        <div className="ml-1 md:ml-3">
                           <StarsRating reviews={review} size={20}></StarsRating>
                         </div>
                       </div>
 
-                      <div className="ml-2 md:ml-1 flex-1 max-w-[85%] md:max-w-[90%] mt-5 ">
-                        <p className="text-[9px] md:text-[10px] text-left break-words">
+                      <div className="ml-1 md:ml-1 flex-1 max-w-[95%] md:max-w-[90%] mt-5 ">
+                        <p className="text-[8px] md:text-[10px] text-left break-words">
                           {review.comment}
                         </p>
                       </div>

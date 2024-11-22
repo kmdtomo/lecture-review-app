@@ -24,7 +24,7 @@ export const SerchLecture: FC<Props> = ({ setSearchKeyword }) => {
         placeholder="講義を検索"
         value={search}
         onChange={onChangeSerch}
-        className="p-2 border border-[#888888]-2  rounded-md  text-sm text-[#88888]"
+        className="p-2 border border-[#888888]-2  rounded-md  text-sm text-[#88888] md:w-full w-[150px]"
       />
     </div>
   );

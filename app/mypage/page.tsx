@@ -63,7 +63,7 @@ export default function MyPage() {
   return (
     <div>
       <div className="container mx-auto">
-        <div className="w-4/5 bg-white shadow-md m-auto mb-14 mt-10 flex flex-col">
+        <div className="md:w-4/5 w-5/6 bg-white shadow-md m-auto mb-14 mt-10 flex flex-col">
           <div className="mx-auto">
             <h3 className="text-lg md:text-2xl font-bold mt-14 mb-6">
               マイページ
@@ -119,7 +119,7 @@ export default function MyPage() {
               {userReviews.map((review) => (
                 <div
                   key={review.id}
-                  className="bg-[#F3F3F3] mx-auto w-full max-w-[420px] md:max-w-[770px] mt-5 rounded-md border border-[#D3CECE] min-h-[85px] flex mb-3"
+                  className="bg-[#F3F3F3] mx-auto  w-[250px] md:max-w-[770px] mt-5 rounded-md border border-[#D3CECE] min-h-[85px] flex mb-3"
                 >
                   <div className="flex justify-between items-start flex-col w-full my-4 md:ml-3 ml-2 ">
                     <div className="flex flex-col">
@@ -129,8 +129,8 @@ export default function MyPage() {
                       <StarsRating reviews={review} size={20}></StarsRating>
                     </div>
 
-                    <div className="flex-1 max-w-[350px] md:max-w-[680px] mt-5">
-                      <p className="text-[9px] md:text-[10px] text-left break-words">
+                    <div className="flex-1 max-w-[350px] md:max-w-[680px] md:mt-5 mt-3">
+                      <p className="text-[7px] md:text-[10px] text-left break-words">
                         {review.comment}
                       </p>
                     </div>
@@ -138,7 +138,8 @@ export default function MyPage() {
                   <div className="flex flex-row items-center justify-end min-w-[0px]  ">
                     <div className="mr-8">
                       <FaTrash
-                        size={15}
+                        className="md:h-[20px] md:w-[20px] mb-10 md:0"
+                        size={10}
                         onClick={async (e) => {
                           e.preventDefault();
                           try {

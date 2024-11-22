@@ -28,7 +28,7 @@ export default async function Home() {
           </h3>
         </div>
         <div className={rammettoOne.className}>
-          <h1 className="text-center md:text-[135px] text-[70px] leading-none">
+          <h1 className="text-center md:text-[135px] text-[60px] leading-none">
             <span className="block">LECTURE</span>
             <span className="block">REVIEW</span>
           </h1>
