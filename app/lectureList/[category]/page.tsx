@@ -3,9 +3,10 @@ import StarsRating from "@/app/molecules/StarRating";
 import { nextAuthOptions } from "@/app/lib/next-auth/option";
 import { Lecture, Review } from "@/app/type/type";
 import { getServerSession } from "next-auth";
-import Image from "next/image";
+
 import Link from "next/link";
-import { FaRegBookmark } from "react-icons/fa";
+
+import { LectureImage } from "@/app/atoms/LectureImage";
 
 export default async function CategoryPage({
   params,
@@ -55,111 +56,63 @@ export default async function CategoryPage({
 
   return (
     <>
-      <DropMenu></DropMenu>
-      <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 my-5 mx-auto">
-        {categoryLecture.map((lecture) => (
-          <Link
-            key={lecture.id}
-            href={
-              user
-                ? `${process.env.NEXT_PUBLIC_BASE_URL}/lecture/${lecture.id}`
-                : "/api/auth/signin"
-            }
-            className="cursor-pointer duration-300 hover:translate-y-1 hover:shadow-none block"
-          >
-            <div className="w-[330px] h-[180px] justify-self-center relative bg-white shadow-md">
-              <div className="bg-[#FCA31C] absolute z-10 px-4">
-                <p className="text-center text-white text-sm ">
-                  {lecture.category}
-                </p>
-              </div>
-              {/* 講義内容（時間、講師名） */}
-              <div className="z-10 absolute text-sm flex flex-col w-full h-full justify-end ">
-                <div className="flex justify-between ">
-                  <ul className="ml-5 text-sm mt-2">
+      <div className="mx-auto">
+        <div className="flex flex-row justify-end items-center mr-5 md:mr-0">
+          <div className="mr-3"></div>
+          <DropMenu />
+        </div>
+
+        <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 my-5 justify-items-center">
+          {categoryLecture.map((lecture) => (
+            <Link
+              key={lecture.id}
+              href={
+                user
+                  ? `${process.env.NEXT_PUBLIC_BASE_URL}/lecture/${lecture.id}`
+                  : "/api/auth/signin"
+              }
+              className="cursor-pointer duration-300 hover:translate-y-1 hover:shadow-none block"
+            >
+              <div className="md:w-[330px] md:h-[210px] w-[300px] h-[180px] relative bg-white shadow-md md:mb-5 mb-3">
+                {/* カテゴリ */}
+                <div className="bg-[#FCA31C] px-4 absolute top-0 left-0 z-10 py-1">
+                  <p className="text-center  text-white text-sm">
+                    {lecture.category}
+                  </p>
+                </div>
+
+                {/* 講義画像 */}
+                <div className="relative w-full h-[100px] md:h-[120px] overflow-hidden bg-black/10">
+                  <LectureImage lecture={lecture} />
+                  {/* 講義名 */}
+                  <h3 className="absolute text-lg md:text-xl text-white text-shadow-md top-1/2 left-5 transform -translate-y-1/2 z-10">
+                    {lecture.lecture_name}
+                  </h3>
+                </div>
+
+                {/* テキストエリア */}
+                <div className="z-10 flex flex-col  justify-between pt-4">
+                  {/* 詳細情報 */}
+                  <ul className="text-xs md:text-sm  pl-4 ">
                     <li>
                       <p className="mb-1">時間：{lecture.day_period}</p>
                       <p>講師名：{lecture.instructor_name}</p>
                     </li>
                   </ul>
 
-                  <div className="flex flex-col items-end mr-2 mb-3">
-                    <FaRegBookmark size={20} className="mb-3" />
+                  {/* 評価 */}
+                  <div className="flex items-center justify-end mb-6 mr-2 z-20">
                     <StarsRating
-                      reviews={
-                        reviewsByLectureId
-                          ? reviewsByLectureId[lecture.id]
-                          : undefined
-                      }
+                      reviews={reviewsByLectureId?.[lecture.id]}
                       size={20}
                     />
                   </div>
                 </div>
               </div>
-
-              {/* 講義名 */}
-              <div className="absolute top-0 left-0 w-full h-3/5 overflow-hidden bg-black/10">
-                <h3 className="z-10 text-xl text-white absolute text-shadow-md top-1/2 transform -translate-y-1/2 ml-5">
-                  {lecture.lecture_name}
-                </h3>
-
-                {(() => {
-                  // カテゴリーのログ
-                  switch (lecture.category) {
-                    case "RD":
-                      return (
-                        <Image
-                          src="/RD.png"
-                          alt="RD"
-                          layout="fill"
-                          objectFit="cover"
-                        />
-                      );
-                    case "D1":
-                      return (
-                        <Image
-                          src="/D1.png"
-                          alt="D1"
-                          layout="fill"
-                          objectFit="cover"
-                        />
-                      );
-                    case "D2":
-                      return (
-                        <Image
-                          src="/D2.png"
-                          alt="D2"
-                          layout="fill"
-                          objectFit="cover"
-                        />
-                      );
-                    case "D3":
-                      return (
-                        <Image
-                          src="/D3.png"
-                          alt="D3"
-                          layout="fill"
-                          objectFit="cover"
-                        />
-                      );
-                    case "D4":
-                      return (
-                        <Image
-                          src="/D4.png"
-                          alt="D4"
-                          layout="fill"
-                          objectFit="cover"
-                        />
-                      );
-                    default:
-                      return null;
-                  }
-                })()}
-              </div>
-            </div>
-          </Link>
-        ))}
-      </main>
+            </Link>
+          ))}
+        </main>
+      </div>
     </>
   );
 }

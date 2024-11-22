@@ -72,8 +72,6 @@ const StarsRating: FC<Props> = memo((props) => {
         allowFraction
         allowHover={false}
         readonly={!onClick}
-        allowTitleTag={false}
-        transition
       />
       <span className="align-baseline text-sm ml-2">{displayRating}</span>
     </div>
