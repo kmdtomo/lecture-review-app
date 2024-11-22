@@ -66,6 +66,7 @@ const StarsRating: FC<Props> = memo((props) => {
       <Rating
         emptyStyle={{ display: "flex" }}
         fillStyle={{ display: "-webkit-inline-box" }}
+        fillColor="#ffbe0a"
         onClick={onClick}
         initialValue={comprehensiveRating}
         size={size}
